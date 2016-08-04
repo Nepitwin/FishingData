@@ -1,10 +1,12 @@
-FishingData
-================
+# FishingData
 
-Simple generic java request handler to obtain data. For example API calls to get JSON files. FishingData used Apache HttpClient.
+Simple generic java request handler to obtain data.
 
-========
-### Example
+For example API calls to get JSON files.
+
+FishingData used Apache HttpClient.
+
+## Example
 
 An example implementation exists under example folder. This example shows how to obtain an json array.
 
@@ -40,7 +42,7 @@ try {
 }
  ```
 
-### License
+## License
 
 ```
 Copyright 2016 Andreas Sekulski
