@@ -27,6 +27,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -66,12 +67,23 @@ public class Main {
 
          FishData<JSONArray> fishData = new FishData<>(responseHandler);
          JSONArray data;
+         JSONObject card;
 
          try {
              data = fishData.fish(url);
              for(int i = 0 ; i < data.length(); i++) {
-                 System.out.println(data.getJSONObject(i));
+                 card = data.getJSONObject(i);
+                 try (FileWriter file = new FileWriter("D:\\Magic_Cards\\" + card.getString("id") + ".json")) {
+                    file.write(card.toString());
+                    file.close();
+                 }
              }
+
+             if(data.length() > 0) {
+                 // Get next cards
+                 storeMagicCards(page + 1);
+             }
+
          } catch (IOException e) {
              e.printStackTrace();
          }
